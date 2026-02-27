@@ -47,9 +47,21 @@ function signRequest(method: string, action: string, body: string): Record<strin
 // 提交图生图任务
 export async function submitImageTask(imageUrl: string, prompt: string, style: string): Promise<string> {
   const fullPrompt = `Interior redesign, transform to ${style} style, ${prompt}`
+
+  // 判断是base64还是URL
+  const isBase64 = imageUrl.startsWith('data:')
+  const imagePayload: Record<string, any> = {}
+  if (isBase64) {
+    // 去掉 data:image/xxx;base64, 前缀，只保留纯base64
+    const base64Data = imageUrl.replace(/^data:image\/\w+;base64,/, '')
+    imagePayload.binary_data_base64 = [base64Data]
+  } else {
+    imagePayload.image_urls = [imageUrl]
+  }
+
   const body = JSON.stringify({
     req_key: 'jimeng_i2i_v30',
-    image_urls: [imageUrl],
+    ...imagePayload,
     prompt: fullPrompt,
     scale: 0.5,
     width: 1472,
