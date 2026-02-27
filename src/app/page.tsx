@@ -99,7 +99,7 @@ export default function Home() {
             >
               📷 免费生成我的效果图
             </button>
-            <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleUpload} />
+            <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/jpg" className="hidden" onChange={handleUpload} />
             <p className="text-xs text-gray-400 mt-3">完全免费 · 无需注册 · 支持全部户型</p>
           </>
         )}
