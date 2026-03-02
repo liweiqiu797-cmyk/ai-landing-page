@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { submitImageTask, getTaskResult } from '@/lib/jimeng'
+import { pickPrompt, STYLE_CONFIG, type StyleId } from '@/lib/style-prompts'
 
 export async function POST(req: NextRequest) {
   try {
-    const { imageUrl, style = '现代简约' } = await req.json()
+    const { imageUrl, styleId = 'modern', promptIndex = 0 } = await req.json()
     if (!imageUrl) return NextResponse.json({ error: '请上传照片' }, { status: 400 })
+
+    // 校验风格
+    if (!(styleId in STYLE_CONFIG)) {
+      return NextResponse.json({ error: '无效风格，请重试' }, { status: 400 })
+    }
 
     // 校验base64图片格式（仅支持jpeg/png）
     if (imageUrl.startsWith('data:')) {
@@ -16,15 +22,25 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const prompt = '保留原始空间布局和窗户位置不变，更换墙面材质，更换地面材质，家具更换为对应风格，整体色调协调，落地窗自然光充足，wide-angle, photorealistic, 8K'
-    const taskId = await submitImageTask(imageUrl, prompt, style)
+    const selected = pickPrompt(styleId as StyleId, Number(promptIndex) || 0)
+    const fullPrompt = `保留原始空间结构和窗户位置，真实可落地家装效果，${selected.prompt}`
+
+    const taskId = await submitImageTask(imageUrl, fullPrompt)
 
     // 轮询结果（最多60秒）
     for (let i = 0; i < 20; i++) {
       await new Promise(r => setTimeout(r, 3000))
       const result = await getTaskResult(taskId)
       if (result.status === 'done' && result.images.length > 0) {
-        return NextResponse.json({ success: true, images: result.images, style })
+        return NextResponse.json({
+          success: true,
+          images: result.images,
+          styleId,
+          styleName: selected.styleName,
+          promptIndex: selected.promptIndex,
+          nextPromptIndex: selected.nextCursor,
+          isFloorPlan: selected.isFloorPlan,
+        })
       }
     }
 

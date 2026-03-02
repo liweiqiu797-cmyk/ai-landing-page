@@ -38,13 +38,16 @@ export function track(event: string, params: Record<string, string | number | bo
   }
 }
 
-// PRD定义的7个埋点事件
+// 埋点事件
 export const Events = {
   PAGE_VIEW: 'page_view',
   CTA_CLICK: 'cta_click',
   PHOTO_UPLOAD: 'photo_upload',
   EFFECT_GENERATED: 'effect_generated',
   STYLE_CLICK: 'style_click',
+  STYLE_SELECT: 'style_select',
+  PROMPT_ROTATE: 'prompt_rotate',
+  FLOORPLAN_SELECT: 'floorplan_select',
   LEAD_POPUP_SHOW: 'lead_popup_show',
   LEAD_SUBMIT: 'lead_submit',
 } as const

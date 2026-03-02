@@ -45,9 +45,7 @@ function signRequest(method: string, action: string, body: string): Record<strin
 }
 
 // 提交图生图任务
-export async function submitImageTask(imageUrl: string, prompt: string, style: string): Promise<string> {
-  const fullPrompt = `Interior redesign, transform to ${style} style, ${prompt}`
-
+export async function submitImageTask(imageUrl: string, fullPrompt: string): Promise<string> {
   // 判断是base64还是URL
   const isBase64 = imageUrl.startsWith('data:')
   const imagePayload: Record<string, any> = {}
