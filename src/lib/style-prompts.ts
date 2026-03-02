@@ -20,7 +20,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   modern: {
     name: '现代简约',
     desc: '干净线条+低饱和配色',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-modern.webp',
     prompts: [
       '现代简约风，保留原户型结构不变，浅灰墙面与木色地板，极简家具，采光通透，真实家装摄影',
       '现代简约客餐厅，去繁从简，隐藏收纳，黑白灰主色，少量木色点缀，空间开阔',
@@ -37,7 +37,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   nordic: {
     name: '北欧',
     desc: '原木+白墙+自然温暖',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-nordic.webp',
     prompts: [
       '北欧风，白墙与浅木色为主，柔和布艺家具，温暖自然光，清新舒适',
       '北欧客厅改造，原木家具与棉麻材质，低饱和色软装，家庭氛围温馨',
@@ -54,7 +54,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   chinese: {
     name: '新中式',
     desc: '东方意境+现代收敛',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-chinese.webp',
     prompts: [
       '新中式风，保留现代空间结构，加入木格栅与东方元素，雅致沉稳',
       '新中式客厅，胡桃木色与米灰墙面，线条简洁，强调东方留白',
@@ -71,7 +71,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   luxury: {
     name: '轻奢',
     desc: '金属点缀+材质层次',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-luxury.webp',
     prompts: [
       '轻奢风，米灰基调，金属线条点缀，大理石与木饰面混搭，质感高级',
       '轻奢客厅，简约造型+精致细节，灯光层次丰富，整体精致',
@@ -88,7 +88,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   wabi: {
     name: '侘寂',
     desc: '质朴肌理+安静留白',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-wabi.webp',
     prompts: [
       '侘寂风，微水泥墙面与自然木质，低饱和，安静克制',
       '侘寂客厅，强调材质肌理与光影变化，空间松弛',
@@ -105,7 +105,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   industrial: {
     name: '工业风',
     desc: '水泥金属+结构表达',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-industrial.webp',
     prompts: [
       '工业风，水泥灰基底，黑色金属框架，结构感强烈',
       '工业风客厅，裸露质感与木质家具平衡，粗犷有序',
@@ -122,7 +122,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   cream: {
     name: '奶油风',
     desc: '奶白暖调+圆润治愈',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-cream.webp',
     prompts: [
       '奶油风，奶白与浅米色主调，圆润线条，柔和治愈',
       '奶油风客厅，低对比配色，材质细腻，温柔氛围',
@@ -139,7 +139,7 @@ export const STYLE_CONFIG: Record<StyleId, StyleConfig> = {
   floorplan: {
     name: '平面图方案',
     desc: '2D布局/动线/功能分区',
-    cover: '/case-modern-living.webp',
+    cover: '/cover-floorplan.webp',
     isFloorPlan: true,
     prompts: [
       '将当前空间转换为2D平面布局方案图，俯视视角，标注客厅/餐厅/卧室/厨房/卫生间分区，清晰动线',
